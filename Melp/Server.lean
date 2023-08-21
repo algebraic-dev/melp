@@ -53,7 +53,9 @@ def Server.start (server: Server) (address: String) (port: String) : IO Unit := 
 
       match parsed with
       | Except.ok data =>
-        let req := { socket := socket', addr := remoteAddr, data }
+        let req := { socket := socket', 
+                     addr := remoteAddr, 
+                     data }
         let _ ← server.on_connection req
         pure ()
       | Except.error _ =>

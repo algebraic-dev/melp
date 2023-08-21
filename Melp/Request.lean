@@ -6,6 +6,7 @@
 import Lina
 import Socket
 
+import Melp.Method
 import Melp.Response
 
 open Socket
@@ -20,10 +21,10 @@ inductive Request.Status
 -- The `Request` structure is used to represent a HTTP request. The `t` parameter is used to track
 -- the status of the request.
 structure Request where
-  socket : Socket
-  addr   : SockAddr
-  data   : Lina.Request
-
+  socket   : Socket
+  addr     : SockAddr
+  data     : Lina.Request
+  
 namespace Request
 
 -- the `answer` function that is used to answer a request. It takes a `Request` structure and 
@@ -37,6 +38,8 @@ def answer
     let response := Melp.Response.new status headers body
     let _ ← req.socket.send $ String.toUTF8 $ response.toString {major := 1, minor := 1}
     req.socket.close
+
+def method (req: Request) : Option Method := Melp.Method.fromString req.data.method
 
 end Request
 end Melp

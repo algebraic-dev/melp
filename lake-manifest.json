@@ -7,4 +7,9 @@
     "rev": "e9190e622e4109196907ee03c33822d10d7d39b9",
     "name": "socket",
     "inputRev?": null}},
-  {"path": {"name": "lina", "dir": "./../lina"}}]}
+  {"git":
+   {"url": "https://github.com/algebraic-sofia/lina",
+    "subDir?": null,
+    "rev": "3169fda8f285d82095424c3a4a7c67214f20816c",
+    "name": "lina",
+    "inputRev?": null}}]}
