@@ -135,6 +135,7 @@ def code : Status → Int
   | SwitchingProtocols => 101
   | Processing => 102
   | EarlyHints => 103
+
   | Ok => 200
   | Created => 201 
   | Accepted => 202

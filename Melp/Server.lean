@@ -14,16 +14,16 @@ namespace Melp
 -- A [Server] structure that holds a socket and user-defined callbacks.
 structure Server where
   socket        : Socket
-  on_connection : Request Request.Status.Open → IO (Request Request.Status.Closed) 
+  on_connection : Request → IO Unit 
   on_bind       : SockAddr → IO Unit
 
 -- Creates a new empty [Server] structure.
 def Server.new : IO Server := do
   let socket ← Socket.mk AddressFamily.inet SockType.stream
-  pure { socket, on_connection := λ conn => conn.notFound, on_bind := λ _ => pure () }
+  pure { socket, on_connection := λ conn => conn.socket.close, on_bind := λ _ => pure () }
 
 -- Sets the user-defined on_connection callback.
-def Server.onConnection (server: Server) (fn: Request Request.Status.Open → IO (Request Request.Status.Closed)) : Server :=
+def Server.onConnection (server: Server) (fn: Request → IO Unit) : Server :=
   { server with on_connection := fn }
 
 -- Sets the user-defined on_bind callback.
