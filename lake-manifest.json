@@ -1,0 +1,10 @@
+{"version": 4,
+ "packagesDir": "lake-packages",
+ "packages":
+ [{"git":
+   {"url": "https://github.com/xubaiw/lean4-socket.git",
+    "subDir?": null,
+    "rev": "e9190e622e4109196907ee03c33822d10d7d39b9",
+    "name": "socket",
+    "inputRev?": null}},
+  {"path": {"name": "lina", "dir": "./../lina"}}]}
