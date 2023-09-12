@@ -12,7 +12,7 @@ inductive Method where
   | Delete
   | Trace
   | Connect
-  deriving BEq
+  deriving BEq, Hashable
 
 instance : ToString Method where
   toString 
